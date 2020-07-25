@@ -1,0 +1,47 @@
+html,body{
+    height:100%;
+}
+
+.mybody{
+    height: 100%;
+    width: 100%;
+    display:flex;
+}
+
+.center-me{
+    margin:auto;
+    text-align: center;
+}
+
+#members_count{
+    display: inline;
+    width: auto;
+}
+
+.result-container .row .col{
+    margin:0 2rem;
+}
+
+.result-container{
+    margin:1rem
+}
+.result-container .row{
+    /* background-color: aquamarine; */
+    border-radius: 0.3rem;
+}
+
+.variation-button{
+    border:none;
+    cursor: pointer;
+    background: none;
+}
+
+.variation-button:focus{
+    outline: none;
+}
+
+#user-input-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}

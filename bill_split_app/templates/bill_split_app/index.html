@@ -1,0 +1,23 @@
+{% extends 'bill_split_app/base.html' %}
+
+{% block title %} Bill Split | Home {% endblock %}
+
+{% block content %}
+{% load static %}
+    <div class="mybody" style="font-family: 'Raleway', sans-serif;">
+        <form action="{% url 'create_members' %}" class="center-me">
+            <div class="form-group">
+                <label for="members_count"><h3>How many people are in your group?</h3></label>
+            </div>
+            <div class="form-group">
+                <button type="button" class="variation-button" onclick="decrement()"><img src="{% static 'bill_split_app/minus.png' %}" alt="-" width="50px"></button>
+                <input type="number" value="3" min="2" max="20" id="members_count" class="form-control" name="members_count">
+                <button type="button" class="variation-button" onclick="increment()"><img src="{% static 'bill_split_app/plus.png' %}" alt="+" width="50px"></button>
+            </div>
+                
+            <div style="display: flex;justify-content: center;">
+                <input type="submit" class="btn btn-warning" style="width:60%;" >
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'bill_split_app/base.html' %}
+
+{% block title %} Bill Split | Result {% endblock %}
+
+{% block content %}
+
+<!-- for 1st version -->
+    <!-- {% for member,net_amount in result %}
+
+        <h2>{{member.name}} : {{net_amount}}</h2>
+        <br><br>
+    {% endfor %} -->   
+
+
+<!-- 2nd version -->
+{% load static %}
+    <div class="mybody"  style="font-family: 'Raleway', sans-serif;">
+        <div class="center-me">
+        {% for transaction in transactions %}
+            <div class="container result-container">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h3>{{transaction.0}}</h3>
+                    </div>
+                    <div class="col ">
+                        <div class="row justify-content-center"><h3 style="color:red;">{{transaction.1 | floatformat:2}}</h3></div>
+                        <div class="row justify-content-center"><img src="{% static 'bill_split_app/arrow.png' %}" alt="------------->" width="70%" height="50px"></div>
+                    </div>
+                    <div class="col">
+                        <h3>{{transaction.2}}</h3>
+                    </div>
+                    
+            
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}

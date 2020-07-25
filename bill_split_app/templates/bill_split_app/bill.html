@@ -1,0 +1,70 @@
+{% extends 'bill_split_app/base.html' %}
+
+{% block title %} Bill Split | Details {% endblock %}
+
+{% block content %}
+
+    
+    {% for member in members %}
+    <div class="container-fluid" style="font-family: 'Nanum Gothic', sans-serif;padding:1rem;">
+      
+      <table class="table">
+        <thead><h2>{{member}}</h2></thead><hr>
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Amount</th>
+            <th scope="col">To</th>
+            <th scope="col">Description</th>
+          </tr>
+        </thead>
+      {% for expenditure in expenditures %}
+        {% if expenditure.payer == member %}
+          
+        <tbody>
+          <tr>
+            <th scope="row">{{expenditure.amount}}</th>
+            <td>{{expenditure.payee}}</td>
+            <td>{{expenditure.description}}</td>
+          </tr>
+      
+        </tbody>
+
+        {% endif %}
+
+      {% endfor %}
+
+        <form class="row" action="{% url 'add_expenditure' member.id %}">
+
+        <tbody>
+          <tr>
+            <th><input type="number" class="form-control" placeholder="0" name="amount"></th>
+            <th>
+              <select name="payee" class="form-control">
+                <option value="Self">Self</option>
+                <option value="Team">Team</option>
+                {% for i in members %}
+                {% if i != member %}
+                <option value="{{i.name}}">{{i.name}}</option>
+                {% endif %}
+                {% endfor %}
+              </select>
+            </th>
+            <th style="display: flex;"><input type="text" name="description" placeholder="Description" class="form-control d-inline-block" style="margin:0 1rem;" required><input type="submit" class="btn btn-success d-inline-block" value="+"></th>
+          </tr>
+        </tbody>
+
+        </form>
+      </table>
+    </div>
+    <br>
+    {% endfor %}
+    <div class="container-fluid d-flex" style="padding-bottom: 3rem;">
+    <form action="{% url 'calculate' %}" style="margin:auto;">
+      <input type="submit" value="Result" class="btn btn-success" style="width: 400px;">
+    </form>
+    </div>
+
+{% endblock %}
+
+
+

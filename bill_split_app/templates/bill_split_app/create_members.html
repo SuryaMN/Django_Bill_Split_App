@@ -1,0 +1,25 @@
+{% extends 'bill_split_app/base.html' %}
+
+{% block title %} Bill Split | Register {% endblock %}
+
+{% block content %}
+<div class="mybody"  style="font-family: 'Nanum Gothic', sans-serif;">
+  <form action="{% url 'register' %}"  class="center-me">
+    <div id="user-input-container">
+    {% for member in members %}
+    
+    <div class="card" style="width: 18rem;border: none;">
+        <div class="card-body">
+                <div class="form-group">
+                  <label>User {{member}}</label>
+                  <input type="text" class="form-control" name="member{{member}}">
+                </div>
+        </div>
+    </div>
+    {% endfor %}
+    </div>  
+
+    <input type="submit"  class="btn btn-warning" style="width:200px;">
+  </form>
+</div>      
+{% endblock %}
